@@ -11,6 +11,7 @@
 #import "APPModel.h"
 #import "YYModel.h"
 #import "AFNetworking.h"
+#import "DownloadOperationManager.h"
 
 @interface ViewController ()
 
@@ -63,22 +64,25 @@
     //为上次操作赋值
     self.lastUrlStr = model.icon;
     
-    //创建操作
-    DownloadOperation *op = [DownloadOperation downloadImageWithUrlStr:model.icon andFinishedBlock:^(UIImage *image) {
-        
-//        [NSThread sleepForTimeInterval:0.5];
-        
+    //单例接管下载操作
+    [[DownloadOperationManager sharedManager] downloadWithUrlStr:model.icon andFinishedBlock:^(UIImage *image) {
         self.iconImageView.image = image;
-        
-        //从操作缓存池中移除
-        [self.opCache removeObjectForKey:model.icon];
     }];
     
-    //添加到操作缓存池
-    [self.opCache setObject:op forKey:model.icon];
-    
-    //将操作添加到队列
-    [self.queue addOperation:op];
+//    //创建操作
+//    DownloadOperation *op = [DownloadOperation downloadImageWithUrlStr:model.icon andFinishedBlock:^(UIImage *image) {
+//        
+//        self.iconImageView.image = image;
+//        
+//        //从操作缓存池中移除
+//        [self.opCache removeObjectForKey:model.icon];
+//    }];
+//    
+//    //添加到操作缓存池
+//    [self.opCache setObject:op forKey:model.icon];
+//    
+//    //将操作添加到队列
+//    [self.queue addOperation:op];
 }
 
 - (void)loadData

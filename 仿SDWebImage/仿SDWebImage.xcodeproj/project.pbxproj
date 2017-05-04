@@ -39,6 +39,7 @@
 		0413B5871EBB53FE00911DF5 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413B56D1EBB53FD00911DF5 /* NSObject+YYModel.m */; };
 		0413B5881EBB53FE00911DF5 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413B56F1EBB53FD00911DF5 /* YYClassInfo.m */; };
 		0413B58B1EBB54D300911DF5 /* APPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413B58A1EBB54D300911DF5 /* APPModel.m */; };
+		0413B58E1EBB625900911DF5 /* DownloadOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0413B58D1EBB625900911DF5 /* DownloadOperationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,8 @@
 		0413B5701EBB53FD00911DF5 /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
 		0413B5891EBB54D300911DF5 /* APPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPModel.h; sourceTree = "<group>"; };
 		0413B58A1EBB54D300911DF5 /* APPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPModel.m; sourceTree = "<group>"; };
+		0413B58C1EBB625900911DF5 /* DownloadOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadOperationManager.h; sourceTree = "<group>"; };
+		0413B58D1EBB625900911DF5 /* DownloadOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadOperationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,8 @@
 			children = (
 				0413B5371EBB4A8500911DF5 /* DownloadOperation.h */,
 				0413B5381EBB4A8500911DF5 /* DownloadOperation.m */,
+				0413B58C1EBB625900911DF5 /* DownloadOperationManager.h */,
+				0413B58D1EBB625900911DF5 /* DownloadOperationManager.m */,
 			);
 			path = DSBWebImage;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				0413B5871EBB53FE00911DF5 /* NSObject+YYModel.m in Sources */,
 				0413B5731EBB53FE00911DF5 /* AFSecurityPolicy.m in Sources */,
 				0413B5771EBB53FE00911DF5 /* MKAnnotationView+WebCache.m in Sources */,
+				0413B58E1EBB625900911DF5 /* DownloadOperationManager.m in Sources */,
 				0413B5751EBB53FE00911DF5 /* AFURLResponseSerialization.m in Sources */,
 				0413B57F1EBB53FE00911DF5 /* SDWebImagePrefetcher.m in Sources */,
 				0413B57E1EBB53FE00911DF5 /* SDWebImageManager.m in Sources */,
