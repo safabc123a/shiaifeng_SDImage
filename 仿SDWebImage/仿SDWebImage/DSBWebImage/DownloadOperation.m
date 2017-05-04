@@ -7,6 +7,7 @@
 //
 
 #import "DownloadOperation.h"
+#import "NSString+path.h"
 
 @interface DownloadOperation ()
 
@@ -42,6 +43,12 @@
     NSURL *url = [NSURL URLWithString:self.urlStr];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [UIImage imageWithData:data];
+    
+    //实现沙盒缓存
+    if(image != nil)
+    {
+        [data writeToFile:[self.urlStr appendCachePath] atomically:YES];
+    }
     
     //取消判断
     if(self.cancelled == YES)
