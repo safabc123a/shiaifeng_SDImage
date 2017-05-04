@@ -30,6 +30,9 @@
 {
     NSLog(@"%s %@",__func__,[NSThread currentThread]);
     
+    // 模拟网络延迟 : 没有实际意义
+    [NSThread sleepForTimeInterval:1.0];
+    
     /*
      下载网络图片
      1. 需要图片地址
@@ -39,6 +42,12 @@
     NSURL *url = [NSURL URLWithString:self.urlStr];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [UIImage imageWithData:data];
+    
+    //取消判断
+    if(self.cancelled == YES)
+    {
+        return;
+    }
     
     if(self.finishedBlock)
     {

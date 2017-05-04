@@ -23,6 +23,8 @@
 
 @property(nonatomic,strong) NSMutableDictionary *opCache;
 
+@property(nonatomic,copy) NSString *lastUrlStr;
+
 @end
 
 @implementation ViewController
@@ -48,13 +50,32 @@
     //获取模型
     APPModel *model = self.appList[random];
     
+    //判断本次是否和上次一样
+    if(![model.icon isEqualToString:self.lastUrlStr] && self.lastUrlStr != nil)
+    {
+        //取消上一次操作
+        [[self.opCache objectForKey:self.lastUrlStr] cancel];
+        
+        //从操作缓存池中移除 取消的操作
+        [self.opCache removeObjectForKey:self.lastUrlStr];
+    }
+    
+    //为上次操作赋值
+    self.lastUrlStr = model.icon;
+    
     //创建操作
     DownloadOperation *op = [DownloadOperation downloadImageWithUrlStr:model.icon andFinishedBlock:^(UIImage *image) {
         
-        [NSThread sleepForTimeInterval:0.5];
+//        [NSThread sleepForTimeInterval:0.5];
         
         self.iconImageView.image = image;
+        
+        //从操作缓存池中移除
+        [self.opCache removeObjectForKey:model.icon];
     }];
+    
+    //添加到操作缓存池
+    [self.opCache setObject:op forKey:model.icon];
     
     //将操作添加到队列
     [self.queue addOperation:op];
