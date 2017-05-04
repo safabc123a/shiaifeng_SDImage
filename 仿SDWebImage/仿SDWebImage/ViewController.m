@@ -54,11 +54,7 @@
     //判断本次是否和上次一样
     if(![model.icon isEqualToString:self.lastUrlStr] && self.lastUrlStr != nil)
     {
-        //取消上一次操作
-        [[self.opCache objectForKey:self.lastUrlStr] cancel];
-        
-        //从操作缓存池中移除 取消的操作
-        [self.opCache removeObjectForKey:self.lastUrlStr];
+        [[DownloadOperationManager sharedManager] cancelWithLastUrlStr:self.lastUrlStr];
     }
     
     //为上次操作赋值

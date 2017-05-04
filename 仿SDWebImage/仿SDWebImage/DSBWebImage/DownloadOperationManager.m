@@ -62,4 +62,18 @@
     [self.queue addOperation:op];
 }
 
+//取消操作方法实现
+- (void)cancelWithLastUrlStr:(NSString *)lastUrlStr
+{
+    //获取上次下载操作
+    DownloadOperation *lastOP = [self.opCache objectForKey:lastUrlStr];
+    
+    if(lastUrlStr != nil)
+    {
+        [lastOP cancel];
+        
+        [self.opCache removeObjectForKey:lastUrlStr];
+    }
+}
+
 @end

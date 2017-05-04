@@ -15,4 +15,6 @@
 
 - (void)downloadWithUrlStr:(NSString *)urlStr andFinishedBlock:(void(^)(UIImage *image))finishedBlock;
 
+- (void)cancelWithLastUrlStr:(NSString *)lastUrlStr;
+
 @end
