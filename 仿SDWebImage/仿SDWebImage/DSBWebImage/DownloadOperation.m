@@ -10,7 +10,9 @@
 
 @interface DownloadOperation ()
 
+@property(nonatomic,copy) NSString *urlStr;
 
+@property(nonatomic,copy) void(^finishedBlock)(UIImage *image);
 
 @end
 
@@ -45,6 +47,16 @@
             self.finishedBlock(image);
         }];
     }
+}
+
++ (instancetype)downloadImageWithUrlStr:(NSString *)urlStr andFinishedBlock:(void (^)(UIImage *))finishedBlock
+{
+    DownloadOperation *op = [[DownloadOperation alloc] init];
+    
+    op.urlStr = urlStr;
+    op.finishedBlock = finishedBlock;
+    
+    return op;
 }
 
 @end

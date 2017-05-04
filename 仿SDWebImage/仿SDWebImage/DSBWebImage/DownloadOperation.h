@@ -11,8 +11,6 @@
 
 @interface DownloadOperation : NSOperation
 
-@property(nonatomic,copy) NSString *urlStr;
-
-@property(nonatomic,copy) void(^finishedBlock)(UIImage *image);
++ (instancetype)downloadImageWithUrlStr:(NSString *)urlStr andFinishedBlock:(void(^)(UIImage *image))finishedBlock;
 
 @end
