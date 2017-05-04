@@ -27,6 +27,14 @@
     //创建操作
     DownloadOperation *op = [[DownloadOperation alloc] init];
     
+    //向自定义操作传入图片
+    op.urlStr = @"http://paper.taizhou.com.cn/tzwb/res/1/2/2015-01/20/12/res03_attpic_brief.jpg";
+    
+    //向自定义操作传入代码块
+    op.finishedBlock = ^(UIImage *image) {
+        NSLog(@"%@ %@",image,[NSThread currentThread]);
+    };
+    
     //将操作添加到队列
     [self.queue addOperation:op];
 }

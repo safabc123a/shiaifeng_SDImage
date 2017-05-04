@@ -37,6 +37,14 @@
     NSURL *url = [NSURL URLWithString:self.urlStr];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [UIImage imageWithData:data];
+    
+    if(self.finishedBlock)
+    {
+        //回到主线程把图片传递出去外界拿到之后,可以立即刷新UI
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            self.finishedBlock(image);
+        }];
+    }
 }
 
 @end
