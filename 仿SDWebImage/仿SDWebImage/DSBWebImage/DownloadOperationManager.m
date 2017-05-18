@@ -43,9 +43,19 @@
         self.opCache = [NSMutableDictionary new];
         
         self.imageCache = [NSMutableDictionary new];
+        
+        //注册内存警告通知
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearMemory) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
     
     return self;
+}
+
+- (void)clearMemory
+{
+    [self.opCache removeAllObjects];
+    [self.queue cancelAllOperations];
+    [self.imageCache removeAllObjects];
 }
 
 - (void)downloadWithUrlStr:(NSString *)urlStr andFinishedBlock:(void (^)(UIImage *))finishedBlock
@@ -123,6 +133,11 @@
     }
     
     return NO;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
